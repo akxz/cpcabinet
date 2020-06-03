@@ -73,12 +73,17 @@ class AnswerService
         $request = $this->request;
 
         $answer = trim($request['answer']);
+        $right_answer = [
+            'no' => '0',
+            'yes' => '1',
+            'voicemail' => '2',
+        ];
 
         $insert = [
             'project_id' => $request['project'],
             'text' => trim($request['phrase']),
             'answer' => $answer,
-            'right_answer' => (($answer == 'yes') ? '1' : '0'),
+            'right_answer' => $right_answer[$answer],
             'language' => $this->getPojectLanguage($request['project']),
         ];
 

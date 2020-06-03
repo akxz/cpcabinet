@@ -195,6 +195,10 @@ function getAnswers() {
                         '<button type="button"'+
                             'data-answer="no"'+
                             'class="btn btn-danger btn-sm btn-answer ml-3">No'+
+                        '</button>'+
+                        '<button type="button"'+
+                            'data-answer="voicemail"'+
+                            'class="btn btn-secondary btn-sm btn-answer ml-3">Voicemail'+
                         '</button></td></tr>';
                 });
             } else {
