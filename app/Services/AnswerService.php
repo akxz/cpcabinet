@@ -36,9 +36,8 @@ class AnswerService
         $query = DB::connection('cpdb')
             ->table('profil')
             ->select('datetime', 'phone', 'text', 'script', 'call_id')
-            // ->distinct()
-            ->whereIn('script', $scripts)
-            ->where('call_status', '=', 'say');
+            ->where('call_status', '=', 'say')
+            ->whereIn('script', $scripts);
 
         // Выборка по дате
         if ($dates) {
@@ -58,8 +57,7 @@ class AnswerService
             $query->whereNotIn('text', $checked_answers);
         }
 
-        $answers = $query->orderBy('id', 'asc')
-            ->limit($request['limit'])
+        $answers = $query->limit($request['limit'])
             ->offset($request['offset'])
             ->get()
             ->toArray();
